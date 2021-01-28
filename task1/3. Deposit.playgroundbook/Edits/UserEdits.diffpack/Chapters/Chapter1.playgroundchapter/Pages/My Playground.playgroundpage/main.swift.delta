@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>import Darwin
+let deposit: Double = 2000
+let percentage: Double = 5
+var amount = deposit
+for i in 1 ... 5 {
+    amount = amount * (1 + percentage / 100)
+}
+print("Сумма вклада через 5 лет: \(round(100 * amount) / 100)")
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 219}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
