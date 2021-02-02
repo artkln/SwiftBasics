@@ -2,21 +2,9 @@
 
 import UIKit
 
-func oddEven(number: Int) -> Bool {
-    if number % 2 == 0 {
-        return true
-    } else {
-        return false
-    }
-}
+func oddEven(number: Int) -> Bool { number % 2 == 0 }
 
-func mod3(_ number: Int) -> Bool {
-    if number % 3 == 0 {
-        return true
-    } else {
-        return false
-    }
-}
+func mod3(_ number: Int, dividedBy divider: Int) -> Bool { number % divider == 0 }
 
 var array: [Int] = []
 for i in stride(from: 0, to: 500, by: 5) {
@@ -24,8 +12,10 @@ for i in stride(from: 0, to: 500, by: 5) {
 }
 
 for value in array {
-    if oddEven(number: value) || !mod3(value) {
-        array.remove(at: array.firstIndex(of: value)!)
+    if oddEven(number: value) || !mod3(value, dividedBy: 3) {
+        if let index = array.firstIndex(of: value) {
+            array.remove(at: index)
+        }
     }
 }
 

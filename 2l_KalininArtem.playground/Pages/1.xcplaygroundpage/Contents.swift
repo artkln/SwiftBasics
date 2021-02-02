@@ -1,12 +1,6 @@
 import UIKit
 
-func oddEven(number: Int) -> Bool {
-    if number % 2 == 0 {
-        return true
-    } else {
-        return false
-    }
-}
+func oddEven(number: Int) -> Bool { number % 2 == 0 }
 
 let n = 456
 

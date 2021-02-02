@@ -13,8 +13,8 @@ for i in 2...n {
 
 while flag == true {
     for value in stride(from: 2 * p, through: n, by: p) {
-        if let test = array.firstIndex(of: value) {
-            array.remove(at: array.firstIndex(of: value)!)
+        if let index = array.firstIndex(of: value) {
+            array.remove(at: index)
         }
     }
 

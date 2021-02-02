@@ -2,17 +2,24 @@
 
 import UIKit
 
-func addFib(_ array: inout [Int]) {
-    array.append(array[array.count - 2] + array[array.count - 1])
+typealias Fibonacci = Decimal
+
+func addFib(_ array: inout [Fibonacci]) {
+    switch array.count {
+    case 0, 1:
+        array.append(1)
+    default:
+        array.append(array[array.count - 2] + array[array.count - 1])
+    }
 }
 
-var array: [Int] = [1, 2]
+var array: [Fibonacci] = []
 
-for _ in 0...49 {
+for _ in 0...99 {
     addFib(&array)
 }
 
-print(array.count) //50 элементов добавлено, 52 вместе с первыми двумя числами
+print(array.count)
 print(array)
 
 //: [Next](@next)
