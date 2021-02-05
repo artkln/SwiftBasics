@@ -1,9 +1,12 @@
 import UIKit
 
 enum CarActions {
-    case startEndine, turnOffEngine
-    case openWindows, closeWindows
-    case loadCargo(cargoVolume: Double), unloadCargo(cargoVolume: Double)
+    case startEndine
+    case turnOffEngine
+    case openWindows
+    case closeWindows
+    case loadCargo(cargoVolume: Double)
+    case unloadCargo(cargoVolume: Double)
 }
 
 enum CarEngineState: String {
@@ -41,7 +44,13 @@ struct SportCar {
         }
     }
     
-    init(brand: String, yearOfManufacture: UInt16, trunkVolume: Double, filledTrunkVolume: Double, engineState: CarEngineState, windowsState: CarWindowsState) {
+    init(brand: String,
+         yearOfManufacture: UInt16,
+         trunkVolume: Double,
+         filledTrunkVolume: Double,
+         engineState: CarEngineState,
+         windowsState: CarWindowsState) {
+        
         self.brand = brand
         self.yearOfManufacture = yearOfManufacture
         self.trunkVolume = trunkVolume
@@ -112,7 +121,13 @@ struct TrunkCar {
         }
     }
     
-    init(brand: String, yearOfManufacture: UInt16, trunkVolume: Double, filledTrunkVolume: Double, engineState: CarEngineState, windowsState: CarWindowsState) {
+    init(brand: String,
+         yearOfManufacture: UInt16,
+         trunkVolume: Double,
+         filledTrunkVolume: Double,
+         engineState: CarEngineState,
+         windowsState: CarWindowsState) {
+        
         self.brand = brand
         self.yearOfManufacture = yearOfManufacture
         self.trunkVolume = trunkVolume
@@ -158,7 +173,12 @@ struct TrunkCar {
 }
 
 
-var sportCar1 = SportCar(brand: "Skoda", yearOfManufacture: 2002, trunkVolume: 250, filledTrunkVolume: 0, engineState: .turnedOff, windowsState: .closed)
+var sportCar1 = SportCar(brand: "Skoda",
+                         yearOfManufacture: 2002,
+                         trunkVolume: 250,
+                         filledTrunkVolume: 0,
+                         engineState: .turnedOff,
+                         windowsState: .closed)
 
 sportCar1.printInformation()
 print("\n")
@@ -170,7 +190,12 @@ sportCar1.printInformation()
 print("\n------------------------------\n")
 
 
-var sportCar2 = SportCar(brand: "BMW", yearOfManufacture: 2015, trunkVolume: 530, filledTrunkVolume: 40, engineState: .turnedOff, windowsState: .closed)
+var sportCar2 = SportCar(brand: "BMW",
+                         yearOfManufacture: 2015,
+                         trunkVolume: 530,
+                         filledTrunkVolume: 40,
+                         engineState: .turnedOff,
+                         windowsState: .closed)
 
 sportCar2.printInformation()
 print("\n")
@@ -180,7 +205,12 @@ sportCar2.printInformation()
 print("\n------------------------------\n")
 
 
-var sportCar3 = SportCar(brand: "Opel", yearOfManufacture: 2009, trunkVolume: 300, filledTrunkVolume: 250, engineState: .started, windowsState: .closed)
+var sportCar3 = SportCar(brand: "Opel",
+                         yearOfManufacture: 2009,
+                         trunkVolume: 300,
+                         filledTrunkVolume: 250,
+                         engineState: .started,
+                         windowsState: .closed)
 
 sportCar3.printInformation()
 print("\n")
@@ -191,7 +221,12 @@ sportCar3.printInformation()
 print("\n------------------------------\n")
 
 
-var trunkCar1 = TrunkCar(brand: "MAN", yearOfManufacture: 2003, trunkVolume: 9000, filledTrunkVolume: 8836, engineState: .started, windowsState: .opened)
+var trunkCar1 = TrunkCar(brand: "MAN",
+                         yearOfManufacture: 2003,
+                         trunkVolume: 9000,
+                         filledTrunkVolume: 8836,
+                         engineState: .started,
+                         windowsState: .opened)
 
 trunkCar1.printInformation()
 print("\n")
@@ -204,7 +239,12 @@ trunkCar1.printInformation()
 print("\n------------------------------\n")
 
 
-var trunkCar2 = TrunkCar(brand: "Volvo", yearOfManufacture: 2012, trunkVolume: 32000, filledTrunkVolume: 250, engineState: .turnedOff, windowsState: .closed)
+var trunkCar2 = TrunkCar(brand: "Volvo",
+                         yearOfManufacture: 2012,
+                         trunkVolume: 32000,
+                         filledTrunkVolume: 250,
+                         engineState: .turnedOff,
+                         windowsState: .closed)
 
 trunkCar2.printInformation()
 print("\n")
