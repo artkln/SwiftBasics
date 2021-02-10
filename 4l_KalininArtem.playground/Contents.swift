@@ -83,11 +83,13 @@ class Car {
     }
     
     func printInfo() {
-        print("Марка: \(brand)")
-        print("Год выпуска: \(yearOfManufacture)")
-        print("Состояние двигателя: \(engineState.rawValue)")
-        print("Состояние окон: \(windowsState.rawValue)")
-        print("Состояние дверей: \(doorState.rawValue)")
+        print("""
+        Марка: \(brand)
+        Год выпуска: \(yearOfManufacture)
+        Состояние двигателя: \(engineState.rawValue)
+        Состояние окон: \(windowsState.rawValue)
+        Состояние дверей: \(doorState.rawValue)
+        """)
     }
     
     func performAction(action: CarActions) {}
@@ -125,12 +127,12 @@ class SportCar: Car {
     override func printInfo() {
         print("Легковой автомобиль")
         super.printInfo()
-        print("Коробка передач: \(transmission.rawValue)")
-        print("Максимальная скорость: \(maxSpeed) км/ч")
-        print("Наличие парктроника:", terminator: " ")
-        parkingSensor ? print("Встроен") : print("Отсутствует")
-        print("Наличие спойлера:", terminator: " ")
-        spoiler ? print("Имеется") : print("Отсутствует")
+        print("""
+        Коробка передач: \(transmission.rawValue)
+        Максимальная скорость: \(maxSpeed) км/ч
+        Наличие парктроника: \(parkingSensor ? "Встроен" : "Отсутствует")
+        Наличие спойлера: \(spoiler ? "Имеется" : "Отсутствует")
+        """)
     }
     
     override func performAction(action: CarActions) {
@@ -185,11 +187,12 @@ class TrunkCar: Car {
     override func printInfo() {
         print("Грузовой автомобиль")
         super.printInfo()
-        print("Объем багажника: \(trunkVolume) л")
-        print("Заполненный объем багажника: \(filledTrunkVolume) л")
-        print("Размер прицепа: \(trailer.rawValue)")
-        print("Наличие запасного колеса:", terminator: " ")
-        spareWheel ? print("Имеется") : print("Отсутствует")
+        print("""
+        Объем багажника: \(trunkVolume) л
+        Заполненный объем багажника: \(filledTrunkVolume) л
+        Размер прицепа: \(trailer.rawValue)
+        Наличие запасного колеса: \(spareWheel ? "Имеется" : "Отсутствует")
+        """)
     }
     
     override func performAction(action: CarActions) {
@@ -305,3 +308,4 @@ print("\n")
 trunkCar2.printInfo()
 
 print("\n------------------------------\n")
+
