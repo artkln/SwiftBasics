@@ -1,14 +1,5 @@
 import UIKit
 
-enum CarActions {
-    case startEndine
-    case turnOffEngine
-    case openWindows
-    case closeWindows
-    case openDoors
-    case closeDoors
-}
-
 enum CarEngineState: String {
     case started = "Заведен"
     case turnedOff = "Заглушен"
@@ -19,7 +10,7 @@ enum CarWindowsState: String {
     case closed = "Закрыты"
 }
 
-enum DoorState: String {
+enum CarDoorsState: String {
     case opened = "Открыты"
     case closed = "Закрыты"
 }
@@ -35,43 +26,28 @@ enum Transmission: String {
 }
 
 protocol Car: class {
-    var brand: String { get set }
-    var yearOfManufacture: UInt16 { get set }
+    var brand: String { get }
+    var yearOfManufacture: UInt16 { get }
     var engineState: CarEngineState { get set }
     var windowsState: CarWindowsState { get set }
-    var doorState: DoorState { get set }
+    var doorState: CarDoorsState { get set }
     
-    func startEngine()
-    func turnOffEngine()
-    func openWindows()
-    func closeWindows()
-    func openDoors()
-    func closeDoors()
+    func changeEngineState(to state: CarEngineState)
+    func changeWindowsState(to state: CarWindowsState)
+    func changeDoorsState(to state: CarDoorsState)
 }
 
 extension Car {
-    func startEngine() {
-        engineState = .started
+    func changeEngineState(to state: CarEngineState) {
+        engineState = state
     }
     
-    func turnOffEngine() {
-        engineState = .turnedOff
+    func changeWindowsState(to state: CarWindowsState) {
+        windowsState = state
     }
     
-    func openWindows() {
-        windowsState = .opened
-    }
-    
-    func closeWindows() {
-        windowsState = .closed
-    }
-    
-    func openDoors() {
-        doorState = .opened
-    }
-    
-    func closeDoors() {
-        doorState = .closed
+    func changeDoorsState(to state: CarDoorsState) {
+        doorState = state
     }
 }
 
@@ -97,7 +73,7 @@ class SportCar: Car {
             }
         }
     }
-    var doorState: DoorState {
+    var doorState: CarDoorsState {
         willSet {
             if newValue == .opened {
                 print("Открываем двери")
@@ -116,7 +92,7 @@ class SportCar: Car {
          yearOfManufacture: UInt16,
          engineState: CarEngineState,
          windowsState: CarWindowsState,
-         doorState: DoorState,
+         doorState: CarDoorsState,
          transmission: Transmission,
          maxSpeed: Double,
          parkingSensor: Bool,
@@ -173,7 +149,7 @@ class TrunkCar: Car {
             }
         }
     }
-    var doorState: DoorState {
+    var doorState: CarDoorsState {
         willSet {
             if newValue == .opened {
                 print("Открываем двери")
@@ -192,7 +168,7 @@ class TrunkCar: Car {
          yearOfManufacture: UInt16,
          engineState: CarEngineState,
          windowsState: CarWindowsState,
-         doorState: DoorState,
+         doorState: CarDoorsState,
          trunkVolume: Double,
          filledTrunkVolume: Double,
          trailer: Trailer,
@@ -256,9 +232,9 @@ var sportCar1 = SportCar(brand: "Skoda",
                          spoiler: false)
 
 print(sportCar1)
-sportCar1.openDoors()
-sportCar1.startEngine()
-sportCar1.openWindows()
+sportCar1.changeDoorsState(to: .opened)
+sportCar1.changeEngineState(to: .started)
+sportCar1.changeWindowsState(to: .opened)
 print(sportCar1)
 
 print("\n------------------------------\n")
@@ -275,8 +251,8 @@ var sportCar2 = SportCar(brand: "BMW",
                          spoiler: true)
 
 print(sportCar2)
-sportCar2.closeWindows()
-sportCar2.closeDoors()
+sportCar2.changeWindowsState(to: .closed)
+sportCar2.changeDoorsState(to: .closed)
 print(sportCar2)
 
 print("\n------------------------------\n")
@@ -294,9 +270,9 @@ var trunkCar1 = TrunkCar(brand: "MAN",
 
 print(trunkCar1)
 trunkCar1.loadCargo(cargoVolume: 4200)
-trunkCar1.turnOffEngine
-trunkCar1.closeWindows
-trunkCar1.closeDoors
+trunkCar1.changeEngineState(to: .turnedOff)
+trunkCar1.changeWindowsState(to: .closed)
+trunkCar1.changeDoorsState(to: .opened)
 print(trunkCar1)
 
 print("\n------------------------------\n")
