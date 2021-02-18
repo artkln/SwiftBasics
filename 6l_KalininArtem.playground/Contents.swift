@@ -143,42 +143,6 @@ struct Queue<T> {
     func printInfo() {
         elements.forEach { print($0) }
     }
-    
-    let filterBySportType: (T) -> Bool = { $0 is SportCar }
-    
-    let filterByTrunkType: (T) -> Bool = { $0 is TrunkCar }
-    
-    let filterByBMW: (T) -> Bool = { element in
-        if let test = element as? SportCar {
-            return test.brand == "BMW"
-        } else {
-            return false
-        }
-    }
-    
-    let filterByYear: (T) -> Bool = { element in
-        if let test = element as? Car {
-            return test.yearOfManufacture > 2002
-        } else {
-            return false
-        }
-    }
-    
-    let filterByTransmission: (T) -> Bool = { element in
-        if let test = element as? Car {
-            return test.transmission == .manual
-        } else {
-            return false
-        }
-    }
-    
-    let filterByTrailer: (T) -> Bool = { element in
-        if let test = element as? TrunkCar {
-            return test.trailer == .small
-        } else {
-            return false
-        }
-    }
 }
 
 extension Queue {
@@ -200,6 +164,29 @@ extension Queue {
         return tmpArray
     }
 }
+
+let filterBySportType: (Car) -> Bool = { $0 is SportCar }
+
+let filterByTrunkType: (Car) -> Bool = { $0 is TrunkCar }
+
+let filterByYear: (Car) -> Bool = { $0.yearOfManufacture > 2002 }
+
+let filterByTransmission: (Car) -> Bool = { $0.transmission == .manual }
+
+let filterByBMW: (Car) -> Bool = { element in
+    if let test = element as? SportCar {
+        return test.brand == "BMW"
+    }
+    return false
+}
+
+let filterByTrailer: (Car) -> Bool = { element in
+    if let test = element as? TrunkCar {
+        return test.trailer == .small
+    }
+    return false
+}
+
 
 var queue = Queue<Car>()
 
@@ -238,7 +225,7 @@ print("-Получаем элемент по индексу 3-")
 if let test = queue[3] {
     print(test)
 } else {
-    print("Элемента с таким  индексом нет в массиве!")
+    print("Элемента с таким  индексом нет в очереди!")
 }
 
 print("-----------------------------------")
@@ -246,35 +233,35 @@ print("-Получаем элемент по индексу 8-")
 if let test = queue[8] {
     print(test)
 } else {
-    print("\nЭлемента с таким  индексом нет в массиве!")
+    print("\nЭлемента с таким  индексом нет в очереди!")
 }
 
 print("-----------------------------------")
 print("-Фильтруем очередь по типу автомобиля (легковой)-")
-var result: [Car] = queue.filter(predicate: queue.filterBySportType)
+var result: [Car] = queue.filter(predicate: filterBySportType)
 result.forEach() { print($0) }
 
 print("-----------------------------------")
 print("-Фильтруем очередь по типу автомобиля (грузовой)-")
-result = queue.filter(predicate: queue.filterByTrunkType)
+result = queue.filter(predicate: filterByTrunkType)
 result.forEach() { print($0) }
 
 print("-----------------------------------")
 print("-Фильтруем очередь по марке автомобиля (BMW)-")
-result = queue.filter(predicate: queue.filterByBMW)
+result = queue.filter(predicate: filterByBMW)
 result.forEach() { print($0) }
 
 print("-----------------------------------")
 print("-Фильтруем очередь по году выпуска автомобиля (старше 2002)-")
-result = queue.filter(predicate: queue.filterByYear)
+result = queue.filter(predicate: filterByYear)
 result.forEach() { print($0) }
 
 print("-----------------------------------")
 print("-Фильтруем очередь по коробке передач автомобиля (механика)-")
-result = queue.filter(predicate: queue.filterByTransmission)
+result = queue.filter(predicate: filterByTransmission)
 result.forEach() { print($0) }
 
 print("-----------------------------------")
 print("-Фильтруем очередь по размеру прицепа автомобиля (малый)-")
-result = queue.filter(predicate: queue.filterByTrailer)
+result = queue.filter(predicate: filterByTrailer)
 result.forEach() { print($0) }
