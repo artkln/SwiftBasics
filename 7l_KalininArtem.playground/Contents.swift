@@ -1,18 +1,5 @@
 import UIKit
 
-struct Doctor {
-    let fio: Fio
-    let queue: Int
-    var price: Int
-    let position: String
-}
-
-struct Fio {
-    let name: String
-    let surname: String
-    let patronymic: String?
-}
-
 enum AppointmentError: Error {
     case invalidSelection
     case longQueue
@@ -33,6 +20,19 @@ enum AppointmentError: Error {
 enum ChangeError: Error {
     case alreadyExists
     case priceTooHigh
+}
+
+struct Doctor {
+    let fio: Fio
+    let queue: Int
+    var price: Int
+    let position: String
+}
+
+struct Fio {
+    let name: String
+    let surname: String
+    let patronymic: String?
 }
 
 class Clinic {
